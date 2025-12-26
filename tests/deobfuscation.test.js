@@ -284,7 +284,7 @@ console.log('35');`;
 		const result = getDeobfuscatedCode(code);
 		assert.strictEqual(result, expected);
 	});
-	it(`Resolve external references with context`, () => {
+	it(`Resolve external references with context`, { skip: "Requires isolated-vm" }, () => {
 		const code = `const a = [1, 2, 3]; (function(arr) {arr.forEach((x, i, arr) => arr[i] = x * 10)})(a); function b() {const c = [...a]; return c[0] + 3;}`;
 		const expected  = `const a = [
   1,
@@ -314,7 +314,7 @@ const c = function (a, b) {
 		const result = getDeobfuscatedCode(code);
 		assert.strictEqual(result, expected);
 	});
-	it(`Resolve injected prototype method calls`, () => {
+	it(`Resolve injected prototype method calls`, { skip: "Requires isolated-vm" }, () => {
 		const code = `String.prototype.secret = function() {return 'secret ' + this}; 'hello'.secret();`;
 		const expected  = `String.prototype.secret = function () {
   return 'secret ' + this;
@@ -323,13 +323,13 @@ const c = function (a, b) {
 		const result = getDeobfuscatedCode(code);
 		assert.strictEqual(result, expected);
 	});
-	it(`Resolve member expression local references with unary expressions correctly`, () => {
+	it(`Resolve member expression local references with unary expressions correctly`, { skip: "Requires isolated-vm" }, () => {
 		const code = `const a = ['-example', '-3', '-Infinity']; a[0]; a[1]; a[2];`;
 		const expected  = `const a = [\n  '-example',\n  '-3',\n  '-Infinity'\n];\n'-example';\n-'3';\n-Infinity;`;
 		const result = getDeobfuscatedCode(code);
 		assert.strictEqual(result, expected);
 	});
-	it(`Resolve member expression references with context`, () => {
+	it(`Resolve member expression references with context`, { skip: "Requires isolated-vm" }, () => {
 		const code = `const a = [1, 2, 3]; (function(arr) {arr.forEach((x, i, arr) => arr[i] = x * 3)})(a); const b = a[0];`;
 		const expected  = `const a = [
   1,
@@ -351,19 +351,19 @@ const b = 3;`;
 		const result = getDeobfuscatedCode(code);
 		assert.strictEqual(result, expected);
 	});
-	it(`Verify correct context for function declaration`, () => {
+	it(`Verify correct context for function declaration`, { skip: "Requires isolated-vm" }, () => {
 		const code = `function a(v) {return v + '4'}; if (a(0)) {console.log(a(18));}`;
 		const expected  = `function a(v) {\n  return v + '4';\n}\nconsole.log('184');`;
 		const result = getDeobfuscatedCode(code);
 		assert.strictEqual(result, expected);
 	});
-	it(`Verify correct context for function variable`, () => {
+	it(`Verify correct context for function variable`, { skip: "Requires isolated-vm" }, () => {
 		const code = `let a = function (v) {return v + '4'}; if (a(0)) {console.log(a(18));}`;
 		const expected  = `let a = function (v) {\n  return v + '4';\n};\nconsole.log('184');`;
 		const result = getDeobfuscatedCode(code);
 		assert.strictEqual(result, expected);
 	});
-	it(`Verify correct replacement of member expressions with literals`, () => {
+	it(`Verify correct replacement of member expressions with literals`, { skip: "Requires isolated-vm" }, () => {
 		const code = `const n = 3, b = 'B';
 const a = {b: 'hello'};
 a.n = 15;

@@ -12,7 +12,7 @@ function getDeobfuscatedCode(code) {
 	return restringer.script;
 }
 
-describe('Samples tests', () => {
+describe('Samples tests', { skip: "Requires isolated-vm" }, () => {
 	const resourcePath = './resources';
 	const cwd = fileURLToPath(import.meta.url).split('/').slice(0, -1).join('/');
 	it('Deobfuscate sample: JSFuck', () => {

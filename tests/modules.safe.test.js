@@ -50,6 +50,7 @@ describe('SAFE: removeRedundantBlockStatements', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: normalizeComputed', async () => {
 	const targetModule = (await import('../src/modules/safe/normalizeComputed.js')).default;
 	it('TP-1: Convert valid string identifiers to dot notation', () => {
@@ -82,6 +83,7 @@ describe('SAFE: normalizeComputed', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: normalizeEmptyStatements', async () => {
 	const targetModule = (await import('../src/modules/safe/normalizeEmptyStatements.js')).default;
 	it('TP-1: Remove standalone empty statements', () => {
@@ -127,6 +129,7 @@ describe('SAFE: normalizeEmptyStatements', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: parseTemplateLiteralsIntoStringLiterals', async () => {
 	const targetModule = (await import('../src/modules/safe/parseTemplateLiteralsIntoStringLiterals.js')).default;
 	it('TP-1: Convert template literal with string expression', () => {
@@ -178,6 +181,7 @@ describe('SAFE: parseTemplateLiteralsIntoStringLiterals', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: rearrangeSequences', async () => {
 	const targetModule = (await import('../src/modules/safe/rearrangeSequences.js')).default;
 	it('TP-1: Split sequenced calls to standalone expressions', () => {
@@ -235,6 +239,7 @@ describe('SAFE: rearrangeSequences', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: rearrangeSwitches', async () => {
 	const targetModule = (await import('../src/modules/safe/rearrangeSwitches.js')).default;
 	it('TP-1: Complex switch with multiple cases and return statement', () => {
@@ -312,6 +317,7 @@ case 1: console.log(1); a = 2; break;}}})();`;
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: removeDeadNodes', async () => {
 	const targetModule = (await import('../src/modules/safe/removeDeadNodes.js')).default;
 	it('TP-1', () => {
@@ -321,6 +327,7 @@ describe('SAFE: removeDeadNodes', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: replaceCallExpressionsWithUnwrappedIdentifier', async () => {
 	const targetModule = (await import('../src/modules/safe/replaceCallExpressionsWithUnwrappedIdentifier.js')).default;
 	it('TP-1: Replace call expression with identifier behind an arrow function', () => {
@@ -378,6 +385,7 @@ describe('SAFE: replaceCallExpressionsWithUnwrappedIdentifier', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: replaceEvalCallsWithLiteralContent', async () => {
 	const targetModule = (await import('../src/modules/safe/replaceEvalCallsWithLiteralContent.js')).default;
 	it('TP-1: Replace eval call with the code parsed from the argument string', () => {
@@ -453,6 +461,7 @@ describe('SAFE: replaceEvalCallsWithLiteralContent', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: replaceFunctionShellsWithWrappedValue', async () => {
 	const targetModule = (await import('../src/modules/safe/replaceFunctionShellsWithWrappedValue.js')).default;
 	it('TP-1: Replace references with identifier', () => {
@@ -522,6 +531,7 @@ describe('SAFE: replaceFunctionShellsWithWrappedValue', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: replaceFunctionShellsWithWrappedValueIIFE', async () => {
 	const targetModule = (await import('../src/modules/safe/replaceFunctionShellsWithWrappedValueIIFE.js')).default;
 	it('TP-1: Replace with wrapped value in-place', () => {
@@ -597,6 +607,7 @@ describe('SAFE: replaceFunctionShellsWithWrappedValueIIFE', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: replaceIdentifierWithFixedAssignedValue', async () => {
 	const targetModule = (await import('../src/modules/safe/replaceIdentifierWithFixedAssignedValue.js')).default;
 	it('TP-1: Replace references with number literal', () => {
@@ -684,6 +695,7 @@ describe('SAFE: replaceIdentifierWithFixedAssignedValue', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: replaceIdentifierWithFixedValueNotAssignedAtDeclaration', async () => {
 	const targetModule = (await import('../src/modules/safe/replaceIdentifierWithFixedValueNotAssignedAtDeclaration.js')).default;
 	it('TP-1: Replace identifier with number literal', () => {
@@ -771,6 +783,7 @@ describe('SAFE: replaceIdentifierWithFixedValueNotAssignedAtDeclaration', async 
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: replaceNewFuncCallsWithLiteralContent', async () => {
 	const targetModule = (await import('../src/modules/safe/replaceNewFuncCallsWithLiteralContent.js')).default;
 	it('TP-1: Replace Function constructor with IIFE', () => {
@@ -840,6 +853,7 @@ describe('SAFE: replaceNewFuncCallsWithLiteralContent', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: replaceBooleanExpressionsWithIf', async () => {
 	const targetModule = (await import('../src/modules/safe/replaceBooleanExpressionsWithIf.js')).default;
 	it('TP-1: Simple logical AND', () => {
@@ -894,6 +908,7 @@ describe('SAFE: replaceBooleanExpressionsWithIf', async () => {
 		assert.strictEqual(result, code);
 	});
 });
+
 describe('SAFE: replaceSequencesWithExpressions', async () => {
 	const targetModule = (await import('../src/modules/safe/replaceSequencesWithExpressions.js')).default;
 	it('TP-1: Replace sequence with 2 expressions in if statement', () => {
@@ -969,6 +984,7 @@ describe('SAFE: replaceSequencesWithExpressions', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: resolveDeterministicIfStatements', async () => {
 	const targetModule = (await import('../src/modules/safe/resolveDeterministicIfStatements.js')).default;
 	it('TP-1: Resolve true and false literals', () => {
@@ -1056,6 +1072,7 @@ describe('SAFE: resolveDeterministicIfStatements', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: resolveFunctionConstructorCalls', async () => {
 	const targetModule = (await import('../src/modules/safe/resolveFunctionConstructorCalls.js')).default;
 	it('TP-1: Replace Function.constructor with no parameters', () => {
@@ -1137,6 +1154,7 @@ describe('SAFE: resolveFunctionConstructorCalls', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: resolveMemberExpressionReferencesToArrayIndex', async () => {
 	const targetModule = (await import('../src/modules/safe/resolveMemberExpressionReferencesToArrayIndex.js')).default;
 	it('TP-1', () => {
@@ -1207,6 +1225,7 @@ describe('SAFE: resolveMemberExpressionReferencesToArrayIndex', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: resolveMemberExpressionsWithDirectAssignment', async () => {
 	const targetModule = (await import('../src/modules/safe/resolveMemberExpressionsWithDirectAssignment.js')).default;
 	it('TP-1: Replace direct property assignments with literal values', () => {
@@ -1288,6 +1307,7 @@ describe('SAFE: resolveMemberExpressionsWithDirectAssignment', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: resolveProxyCalls', async () => {
 	const targetModule = (await import('../src/modules/safe/resolveProxyCalls.js')).default;
 	it('TP-1: Replace chained proxy calls with direct function calls', () => {
@@ -1363,6 +1383,7 @@ describe('SAFE: resolveProxyCalls', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: resolveProxyReferences', async () => {
 	const targetModule = (await import('../src/modules/safe/resolveProxyReferences.js')).default;
 	it('TP-1: Replace proxy reference with direct reference', () => {
@@ -1462,6 +1483,7 @@ describe('SAFE: resolveProxyReferences', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: resolveProxyVariables', async () => {
 	const targetModule = (await import('../src/modules/safe/resolveProxyVariables.js')).default;
 	it('TP-1: Replace proxy variable references with target identifier', () => {
@@ -1531,6 +1553,7 @@ describe('SAFE: resolveProxyVariables', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: resolveRedundantLogicalExpressions', async () => {
 	const targetModule = (await import('../src/modules/safe/resolveRedundantLogicalExpressions.js')).default;
 	it('TP-1: Simplify basic true and false literals with && and ||', () => {
@@ -1618,6 +1641,7 @@ describe('SAFE: resolveRedundantLogicalExpressions', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: unwrapFunctionShells', async () => {
 	const targetModule = (await import('../src/modules/safe/unwrapFunctionShells.js')).default;
 	it('TP-1: Unwrap and rename', () => {
@@ -1711,6 +1735,7 @@ describe('SAFE: unwrapFunctionShells', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: unwrapIIFEs', async () => {
 	const targetModule = (await import('../src/modules/safe/unwrapIIFEs.js')).default;
 	it('TP-1: Arrow functions', () => {
@@ -1793,6 +1818,7 @@ describe('SAFE: unwrapIIFEs', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: unwrapSimpleOperations', async () => {
 	const targetModule = (await import('../src/modules/safe/unwrapSimpleOperations.js')).default;
 	it('TP-1: Binary operations', () => {
@@ -2020,6 +2046,7 @@ typeof 1;
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: separateChainedDeclarators', async () => {
 	const targetModule = (await import('../src/modules/safe/separateChainedDeclarators.js')).default;
 	it('TP-1: A single const', () => {
@@ -2107,6 +2134,7 @@ describe('SAFE: separateChainedDeclarators', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: simplifyCalls', async () => {
 	const targetModule = (await import('../src/modules/safe/simplifyCalls.js')).default;
 	it('TP-1: With args', () => {
@@ -2182,6 +2210,7 @@ describe('SAFE: simplifyCalls', async () => {
 		assert.strictEqual(result, expected);
 	});
 });
+
 describe('SAFE: simplifyIfStatements', async () => {
 	const targetModule = (await import('../src/modules/safe/simplifyIfStatements.js')).default;
 	it('TP-1: Empty blocks', () => {

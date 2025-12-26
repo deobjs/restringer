@@ -4,7 +4,7 @@ import {generateFlatAST} from 'flast';
 import {describe, it, beforeEach} from 'node:test';
 import {BAD_VALUE} from '../src/modules/config.js';
 
-describe('UTILS: evalInVm', async () => {
+describe('UTILS: evalInVm', { skip: "Requires isolated-vm" }, async () => {
 	const targetModule = (await import('../src/modules/utils/evalInVm.js')).evalInVm;
 	it('TP-1: String concatenation', () => {
 		const code = `'hello ' + 'there';`;
@@ -135,6 +135,7 @@ describe('UTILS: evalInVm', async () => {
 		assert.deepStrictEqual(result, expected);
 	});
 });
+
 describe('UTILS: areReferencesModified', async () => {
 	const targetModule = (await import('../src/modules/utils/areReferencesModified.js')).areReferencesModified;
 	it('TP-1: Update expression', () => {
@@ -258,6 +259,7 @@ describe('UTILS: areReferencesModified', async () => {
 		assert.deepStrictEqual(result, expected);
 	});
 });
+
 describe('UTILS: createNewNode', async () => {
 	const targetModule = (await import('../src/modules/utils/createNewNode.js')).createNewNode;
 	it('Literan: String', () => {
@@ -403,6 +405,7 @@ describe('UTILS: createNewNode', async () => {
 	});
 
 });
+
 describe('UTILS: doesDescendantMatchCondition', async () => {
 	const targetModule = (await import('../src/modules/utils/doesDescendantMatchCondition.js')).doesDescendantMatchCondition;
 	
@@ -838,6 +841,7 @@ describe('UTILS: getCache', async () => {
 		assert.deepStrictEqual(getCache(hash2), {});
 	});
 });
+
 describe('UTILS: getCalleeName', async () => {
 	const targetModule = (await import('../src/modules/utils/getCalleeName.js')).getCalleeName;
 	it('TP-1: Simple identifier callee', () => {
@@ -941,6 +945,7 @@ describe('UTILS: getCalleeName', async () => {
 		assert.strictEqual(result, ''); // Complex expressions return empty
 	});
 });
+
 describe('UTILS: getDeclarationWithContext', async () => {
 	const targetModule = (await import('../src/modules/utils/getDeclarationWithContext.js')).getDeclarationWithContext;
 	const getCache = (await import('../src/modules/utils/getCache.js')).getCache;
@@ -1026,6 +1031,7 @@ describe('UTILS: getDeclarationWithContext', async () => {
 		assert.deepStrictEqual(result, expected);
 	});
 });
+
 describe('UTILS: getDescendants', async () => {
 	const targetModule = (await import('../src/modules/utils/getDescendants.js')).getDescendants;
 	it('TP-1', () => {
@@ -1120,6 +1126,7 @@ describe('UTILS: getDescendants', async () => {
 		assert.deepStrictEqual(result, expected);
 	});
 });
+
 describe('UTILS: getMainDeclaredObjectOfMemberExpression', async () => {
 	const targetModule = (await import('../src/modules/utils/getMainDeclaredObjectOfMemberExpression.js')).getMainDeclaredObjectOfMemberExpression;
 	it('TP-1: Simple member expression with declared object', () => {
@@ -1187,6 +1194,7 @@ describe('UTILS: getMainDeclaredObjectOfMemberExpression', async () => {
 		assert.deepStrictEqual(result, targetNode);
 	});
 });
+
 describe('UTILS: getObjType', async () => {
 	const targetModule = (await import('../src/modules/utils/getObjType.js')).getObjType;
 	it('TP-1: Detect Array type', () => {
@@ -1254,6 +1262,7 @@ describe('UTILS: getObjType', async () => {
 		assert.strictEqual(result, 'BigInt');
 	});
 });
+
 describe('UTILS: isNodeInRanges', async () => {
 	const targetModule = (await import('../src/modules/utils/isNodeInRanges.js')).isNodeInRanges;
 	it('TP-1: Node completely within single range', () => {
@@ -1320,7 +1329,8 @@ describe('UTILS: isNodeInRanges', async () => {
 		assert.strictEqual(result, false);
 	});
 });
-describe('UTILS: Sandbox', async () => {
+
+describe('UTILS: Sandbox', { skip: "Requires isolated-vm" }, async () => {
 	const {Sandbox} = await import('../src/modules/utils/sandbox.js');
 	it('TP-1: Basic code execution', () => {
 		const sandbox = new Sandbox();

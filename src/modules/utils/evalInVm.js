@@ -1,4 +1,4 @@
-import {Sandbox} from './sandbox.js';
+// import {Sandbox} from './sandbox.js';
 import {BAD_VALUE} from '../config.js';
 import {getObjType} from './getObjType.js';
 import {generateHash} from './generateHash.js';
@@ -57,7 +57,7 @@ const MAX_CACHE_SIZE = 100;
  * // evalInVm('Math.random()') => BAD_VALUE (unsafe/non-deterministic)
  * // evalInVm('[1,2,3].length') => {type: 'Literal', value: 3, raw: '3'}
  */
-export function evalInVm(stringToEval, sb) {
+function evalInVm(stringToEval, sb) {
 	const cacheName = `eval-${generateHash(stringToEval)}`;
 	if (CACHE[cacheName] === undefined) {
 		// Simple cache eviction: clear all when hitting size limit
@@ -94,3 +94,5 @@ export function evalInVm(stringToEval, sb) {
 
 // Attach BAD_VALUE to evalInVm for convenient access by modules using evalInVm
 evalInVm.BAD_VALUE = BAD_VALUE;
+
+// export {evalInVm}

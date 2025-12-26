@@ -1,4 +1,4 @@
-import pkg from 'isolated-vm';
+// import pkg from 'isolated-vm';
 const {Isolate, Reference} = pkg;
 
 // Security-critical APIs that must be blocked in the sandbox environment
@@ -46,7 +46,7 @@ const DEFAULT_TIMEOUT = 1000;
  * - Execution of prototype method calls
  * - Local function call resolution with context
  */
-export class Sandbox {
+class Sandbox {
 	/**
 	 * Creates a new isolated sandbox environment with security restrictions.
 	 * The sandbox is configured with memory limits, execution timeouts, and blocked APIs.
@@ -105,3 +105,5 @@ export class Sandbox {
 		return obj != null && Object.getPrototypeOf(obj) === Reference.prototype;
 	}
 }
+
+// export {Sandbox}

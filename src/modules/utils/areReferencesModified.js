@@ -1,7 +1,5 @@
 import {PROPERTIES_THAT_MODIFY_CONTENT} from '../config.js';
 
-
-
 // AST node types that indicate potential modification
 const ASSIGNMENT_TYPES = ['AssignmentExpression', 'ForInStatement', 'ForOfStatement', 'ForAwaitStatement'];
 

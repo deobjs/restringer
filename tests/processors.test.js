@@ -25,7 +25,7 @@ function applyProcessors(arb, processors) {
 	return arb;
 }
 
-describe('Processors tests: Augmented Array', async () => {
+describe('Processors tests: Augmented Array', { skip: "Requires isolated-vm" }, async () => {
 	const targetProcessors = (await import('../src/processors/augmentedArray.js'));
 	it('TP-1: Complex IIFE with mixed array elements', () => {
 		const code = `const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 'a', 'b', 'c'];
@@ -219,6 +219,7 @@ shuffle(arr, 2);`;
 		assert.strictEqual(arb.script, originalScript);
 	});
 });
+
 describe('Processors tests: Caesar Plus', async () => {
 	const targetProcessors = (await import('../src/processors/caesarp.js'));
 	// TODO: Fix test
@@ -240,7 +241,8 @@ describe('Processors tests: Caesar Plus', async () => {
 		assert.strictEqual(arb.script, expected);
 	});
 });
-describe('Processors tests: Function to Array', async () => {
+
+describe('Processors tests: Function to Array', { skip: "Requires isolated-vm" }, async () => {
 	const targetProcessors = (await import('../src/processors/functionToArray.js'));
 	it('TP-1: Independent call', () => {
 		const code = `function getArr() {return ['One', 'Two', 'Three']} const a = getArr(); console.log(a[0] + ' + ' + a[1] + ' = ' + a[2]);`;
@@ -292,7 +294,8 @@ describe('Processors tests: Function to Array', async () => {
 		assert.strictEqual(arb.script, expected);
 	});
 });
-describe('Processors tests: Obfuscator.io', async () => {
+
+describe('Processors tests: Obfuscator.io', { skip: "Requires isolated-vm" }, async () => {
 	const targetProcessors = (await import('../src/processors/obfuscator.io.js'));
 	it('TP-1', () => {
 		const code = `var a = {

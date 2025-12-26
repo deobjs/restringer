@@ -3,7 +3,7 @@ export default {
 	createNewNode: (await import('./createNewNode.js')).createNewNode,
 	createOrderedSrc: (await import('./createOrderedSrc.js')).createOrderedSrc,
 	doesDescendantMatchCondition: (await import('./doesDescendantMatchCondition.js')).doesDescendantMatchCondition,
-	evalInVm: (await import('./evalInVm.js')).evalInVm,
+	// evalInVm: (await import('./evalInVm.js')).evalInVm,
 	generateHash: (await import('./generateHash.js')).generateHash,
 	getCache: (await import('./getCache.js')).getCache,
 	getCalleeName: (await import('./getCalleeName.js')).getCalleeName,
@@ -14,5 +14,5 @@ export default {
 	isNodeInRanges: (await import('./isNodeInRanges.js')).isNodeInRanges,
 	normalizeScript: (await import('./normalizeScript.js')).normalizeScript,
 	safeImplementations: (await import('./safeImplementations.js')),
-	sandbox: (await import('./sandbox.js')).Sandbox,
+	// sandbox: (await import('./sandbox.js')).Sandbox,
 };

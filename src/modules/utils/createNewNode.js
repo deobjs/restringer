@@ -1,6 +1,6 @@
 import {BAD_VALUE} from '../config.js';
 import {getObjType} from './getObjType.js';
-import {generateCode, parseCode, logger} from 'flast';
+import {parseCode, logger} from 'flast';
 
 /**
  * Creates an AST node from a JavaScript value by analyzing its type and structure.

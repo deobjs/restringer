@@ -2,7 +2,12 @@ import {fileURLToPath} from 'node:url';
 import {logger as flastLogger, applyIteratively} from 'flast';
 import {processors} from './processors/index.js';
 import {detectObfuscation} from 'obfuscation-detector';
-import {config, safe as safeMod, unsafe as unsafeMod, utils} from './modules/index.js';
+import {
+	config,
+	safe as safeMod,
+	// unsafe as unsafeMod,
+	utils
+} from './modules/index.js';
 const {normalizeScript} = utils.default;
 import {readFileSync} from 'node:fs';
 const __version__ = JSON.parse(readFileSync(fileURLToPath(new URL('../package.json', import.meta.url)), 'utf-8')).version;
@@ -10,10 +15,10 @@ const safe = {};
 for (const funcName in safeMod) {
 	safe[funcName] = safeMod[funcName].default || safeMod[funcName];
 }
-const unsafe = {};
-for (const funcName in unsafeMod) {
-	unsafe[funcName] = unsafeMod[funcName].default || unsafeMod[funcName];
-}
+// const unsafe = {};
+// for (const funcName in unsafeMod) {
+// 	unsafe[funcName] = unsafeMod[funcName].default || unsafeMod[funcName];
+// }
 
 // Silence async errors
 // process.on('uncaughtException', () => {});
@@ -69,16 +74,16 @@ export class REstringer {
 		];
 		// Deobfuscation methods that use eval
 		this.unsafeMethods = [
-			unsafe.resolveMinimalAlphabet,
-			unsafe.resolveDefiniteBinaryExpressions,
-			unsafe.resolveAugmentedFunctionWrappedArrayReplacements,
-			unsafe.resolveMemberExpressionsLocalReferences,
-			unsafe.resolveDefiniteMemberExpressions,
-			unsafe.resolveBuiltinCalls,
-			unsafe.resolveDeterministicConditionalExpressions,
-			unsafe.resolveInjectedPrototypeMethodCalls,
-			unsafe.resolveLocalCalls,
-			unsafe.resolveEvalCallsOnNonLiterals,
+			// unsafe.resolveMinimalAlphabet,
+			// unsafe.resolveDefiniteBinaryExpressions,
+			// unsafe.resolveAugmentedFunctionWrappedArrayReplacements,
+			// unsafe.resolveMemberExpressionsLocalReferences,
+			// unsafe.resolveDefiniteMemberExpressions,
+			// unsafe.resolveBuiltinCalls,
+			// unsafe.resolveDeterministicConditionalExpressions,
+			// unsafe.resolveInjectedPrototypeMethodCalls,
+			// unsafe.resolveLocalCalls,
+			// unsafe.resolveEvalCallsOnNonLiterals,
 		];
 	}
 
